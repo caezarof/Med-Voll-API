@@ -43,6 +43,7 @@ public interface MedicoRepository extends JpaRepository<Medico, Long>{
             Select c.medico.id
             FROM Consulta c
             WHERE c.data = :data
+            AND c.motivoCancelamento is NULL
             )
             """)
         //AND c.motivoCancelamento is NULL

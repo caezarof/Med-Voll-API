@@ -1,7 +1,8 @@
 package br.com.med_voll_api.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import br.com.med_voll_api.domain.consulta.DadosCancelamentoConsulta;
+import br.com.med_voll_api.repository.ConsultaRepository;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.med_voll_api.domain.consulta.AgendaDeConsultas;
@@ -13,8 +14,6 @@ import jakarta.validation.Valid;
 import java.net.URI;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
@@ -33,6 +32,13 @@ public class ConsultaController {
         DadosDetalhamentoConsulta consulta = agenda.agendar(dados);
         URI uri = uriBuilder.path("/consultas/{id}").buildAndExpand(consulta.id()).toUri();
         return ResponseEntity.created(uri).body(consulta);
+    }
+
+    @DeleteMapping("/cancelar")
+    @Transactional
+    public ResponseEntity<Void> cancelar(@RequestBody @Valid DadosCancelamentoConsulta dados) {
+        agenda.cancelar(dados);
+        return ResponseEntity.noContent().build();
     }
     
 }

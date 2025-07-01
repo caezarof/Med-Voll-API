@@ -1,4 +1,4 @@
-package br.com.med_voll_api.domain.consulta.validacoes;
+package br.com.med_voll_api.domain.consulta.validacoes.agendamento;
 
 import org.springframework.stereotype.Component;
 
@@ -15,7 +15,7 @@ public class ValidarMedicoComConsultaMarcadaEmMesmoHorario implements IValidador
     }
 
     public void validar(DadosAgendamentoConsulta dados){
-        boolean medicoPossuiConsultaMarcadaEmMesmoHorario = repository.existsByMedicoIdAndData(dados.idMedico(), dados.data());
+        boolean medicoPossuiConsultaMarcadaEmMesmoHorario = repository.existsByMedicoIdAndDataAndMotivoCancelamentoIsNull(dados.idMedico(), dados.data());
 
         if (medicoPossuiConsultaMarcadaEmMesmoHorario) {
             throw new ValidationException("O médico escolhido já possui consulta marcada no horário desejado.");

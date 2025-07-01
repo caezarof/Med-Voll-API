@@ -32,7 +32,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 @RequestMapping({ "/pacientes", "/pacientes/" })
 public class PacienteController {
 
-    private PacienteRepository repository;
+    private final PacienteRepository repository;
     private final PacienteService service;
 
     public PacienteController(PacienteRepository repository, PacienteService service) {
