@@ -1,7 +1,7 @@
 package br.com.med_voll_api.controller;
 
 import br.com.med_voll_api.domain.consulta.DadosCancelamentoConsulta;
-import br.com.med_voll_api.repository.ConsultaRepository;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -18,6 +18,7 @@ import org.springframework.http.ResponseEntity;
 
 @RestController
 @RequestMapping("/consultas")
+@SecurityRequirement(name = "bearer-key")
 public class ConsultaController {
 
     private final AgendaDeConsultas agenda;

@@ -1,5 +1,6 @@
 package br.com.med_voll_api.controller;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -31,6 +32,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping({ "/medicos", "/medicos/" })
+@SecurityRequirement(name = "bearer-key")
 public class MedicoController {
 
     private final MedicoRepository repository;

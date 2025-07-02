@@ -1,6 +1,8 @@
 package br.com.med_voll_api.controller;
 
 import java.net.URI;
+
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -30,6 +32,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping({ "/pacientes", "/pacientes/" })
+@SecurityRequirement(name = "bearer-key")
 public class PacienteController {
 
     private final PacienteRepository repository;
