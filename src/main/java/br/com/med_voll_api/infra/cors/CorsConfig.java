@@ -1,4 +1,4 @@
-package br.com.med_voll_api.config;
+package br.com.med_voll_api.infra.cors;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

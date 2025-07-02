@@ -36,7 +36,7 @@ public interface MedicoRepository extends JpaRepository<Medico, Long>{
 
     @Query("""
             SELECT CASE WHEN COUNT(m) > 0 THEN true ELSE false END
-            FROM Medico m 
+            FROM Medico m
             WHERE m.ativo = true
             AND m.especialidade = :especialidade
             AND m.id NOT IN(
